@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DADFAM - Танцевальная студия</title>
+    <style>
+        :root {
+            --black: #000000;
+            --gold: #D4AF37;
+            --light-gold: #F5E6AB;
+            --dark-gold: #996515;
+            --gray: #222222;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--black);
+            color: white;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--black), var(--gray));
+            color: var(--gold);
+            padding: 1rem 0;
+            text-align: center;
+            border-bottom: 3px solid var(--gold);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-style: italic;
+            color: var(--light-gold);
+        }
+        
+        nav {
+            background-color: var(--gray);
+            padding: 1rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--light-gold);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            background: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/Лого.jpg') no-repeat center center;
+            background-size: cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 0.8rem 1.8rem;
+            margin-top: 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-gold);
+            color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--gold);
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 0.5rem auto;
+        }
+        
+        .groups, .teachers {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .group-card, .teacher-card {
+            background-color: var(--gray);
+            border: 1px solid var(--gold);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .group-card:hover, .teacher-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .group-img, .teacher-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .group-content, .teacher-content {
+            padding: 1.5rem;
+        }
+        
+        .group-title, .teacher-title {
+            color: var(--gold);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        
+        .group-schedule, .teacher-groups {
+            color: var(--light-gold);
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+        
+        .teacher-groups {
+            font-style: italic;
+        }
+         .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 3rem;
+            background-color: var(--gray);
+            border: 1px solid var(--gold);
+        }
+        
+        .schedule-table th, .schedule-table td {
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid var(--gold);
+        }
+        
+        .schedule-table th {
+            background-color: var(--dark-gold);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .schedule-table tr:nth-child(even) {
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        
+        .schedule-table tr:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+        
+        .day-column {
+            font-weight: bold;
+            color: var(--light-gold);
+        }
+        
+        footer {
+            background-color: var(--gray);
+            color: var(--light-gold);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid var(--gold);
+        }
+        
+        footer {
+            background-color: var(--gray);
+            color: var(--light-gold);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid var(--gold);
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: var(--light-gold);
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DADFAM</div>
+        <div class="tagline">Искусство движения в каждом шаге</div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#groups">Группы</a></li>
+            <li><a href="#teachers">Преподаватели</a></li>
+            <li><a href="#schedule">Расписание</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Раскройте свой потенциал</h1>
+            <p>DADFAM - ПЕРВАЯ ТАНЦЕВАЛЬНАЯ СТУДИЯ
+
+                🤍Коллектив DADFAM - это команда, в которой культура, саморазвитие и стремление стимулируют творческий и физический потенциал.
+                 Место, где каждый человек приходит с большим желанием танцевать и творить! </p>
+            <a href="#groups" class="btn">Выбрать группу</a>
+        </div>
+    </section>
+    
+    <div class="container">
+        <section id="groups">
+            <h2 class="section-title">Наши группы</h2>
+            
+            <div class="groups">
+                <!-- Группа 1 -->
+                <div class="group-card">
+                    <div class="group-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/photo_5373231244277576092_y.jpg');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Современные танцы 7+</h3>
+                        <div class="group-schedule"></div>
+                    </div>
+                </div>
+
+                <!-- Группа 3 -->
+                <div class="group-card">
+                    <div class="group-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/photo_5373231244277576090_y.jpg');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Современные танцы 11+</h3>
+                        <div class="group-schedule"></div>
+                    </div>
+                </div>
+                
+                <!-- Группа 4 -->
+                <div class="group-card">
+                    <div class="group-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/photo_5366421848507679066_y.jpg');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Современные танцы 13+</h3>
+                        <div class="group-schedule"></div>
+                    </div>
+                </div>
+                
+                <!-- Группа 5 -->
+                <div class="group-card">
+                    <div class="group-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/photo_5366421848507679064_y.jpg');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Современные танцы 15+</h3>
+                        <div class="group-schedule"></div>
+                    </div>
+                </div>
+               
+               <!--группа 6-->
+                <div class="group-card">
+                    <div class="group-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/photo_5373231244277576095_y.jpg');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">JAZZ-FUNK</h3>
+                        <div class="group-schedule"></div>
+                    </div>
+                </div>
+                
+                <!--группа 7-->
+                <div class="group-card">
+                    <div class="group-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/photo_5373231244277576094_y.jpg');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">K-POP</h3>
+                        <div class="group-schedule"></div>
+                    </div>
+                </div>
+                 <!-- Группа  9-->
+                 <div class="group-card">
+                    <div class="group-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/photo_5366421848507679060_y.jpg');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Детская хореография </h3>
+                        <div class="group-schedule"></div>
+                    </div>
+                </div>
+                 <!-- Группа  10-->
+                 <div class="group-card">
+                    <div class="group-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/photo_5373231244277576111_y.jpg');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Танцы для взрослых</h3>
+                        <div class="group-schedule"></div>
+                    </div>
+                </div>
+                 <!-- Группа  11-->
+                 <div class="group-card">
+                    <div class="group-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/photo_5373231244277576106_x.jpg');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Фитнес</h3>
+                        <div class="group-schedule"></div>
+                    </div>
+                </div>
+                 <!-- Группа  12-->
+                 <div class="group-card">
+                    <div class="group-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/photo_5373231244277576110_y.jpg');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Растяжка</h3>
+                        <div class="group-schedule"></div>
+                    </div>
+                </div>
+                 <!-- Группа  13-->
+                 <div class="group-card">
+                    <div class="group-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/photo_5373231244277576104_y.jpg');"></div>
+                    <div class="group-content">
+                        <h3 class="group-title">Классика</h3>
+                        <div class="group-schedule"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="teachers">
+            <h2 class="section-title">Наши преподаватели</h2>
+            <div class="teachers">
+                <!-- Преподаватель 1 -->
+                <div class="teacher-card">
+                    <div class="teacher-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/Мариета.jpg');"></div>
+                    <div class="teacher-content">
+                        <h3 class="teacher-title">Дадян Мариета Андраниковна</h3>
+                        <div class="teacher-groups">Современные танцы 9+,11+,13+,15+,Танцы для взрослых</div>
+                    </div>
+                </div>
+                
+                <!-- Преподаватель 2 -->
+                <div class="teacher-card">
+                    <div class="teacher-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/photo_5373033800336010472_y.jpg');"></div>
+                    <div class="teacher-content">
+                        <h3 class="teacher-title">Ходор Екатирина Васильевна</h3>
+                        <div class="teacher-groups">Детская хореография 3+,5+</div>
+                    </div>
+                </div>
+                
+                <!-- Преподаватель 3 -->
+                <div class="teacher-card">
+                    <div class="teacher-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/Шлюха.jpg');"></div>
+                    <div class="teacher-content">
+                        <h3 class="teacher-title">Захарцова Анна Фёдоровна</h3>
+                        <div class="teacher-groups">K-pop,Растяжка,Современные танцы 9+ </div>
+                    </div>
+                </div>
+                
+                <!-- Преподаватель 4 -->
+                <div class="teacher-card">
+                    <div class="teacher-img" style="background-image: url('https://sun9-9.userapi.com/impg/-e8xj6j7Off5boZffbJp4t9iV88HQMCr2VGNnA/9YZhtn0Anys.jpg?size=1440x2160&quality=95&sign=69e1a558176136b7239bdcfd5b071b6c&type=album');"></div>
+                    <div class="teacher-content">
+                        <h3 class="teacher-title">Лизнева Анна Вячеславновна</h3>
+                        <div class="teacher-groups">Современные танцы 7+,Классика</div>
+                    </div>
+                </div>
+                
+                <!-- Преподаватель 5 -->
+                <div class="teacher-card">
+                    <div class="teacher-img" style="background-image: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/Надя.jpg');"></div>
+                    <div class="teacher-content">
+                        <h3 class="teacher-title">Литвинова Надежда Андреевна</h3>
+                        <div class="teacher-groups">JAZZ-FUNK,Фитнес</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Новая секция Расписание -->
+        <section id="schedule">
+            <h2 class="section-title">Расписание занятий</h2>
+            
+            <div class="schedule-container">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Понедельник</th>
+                            <th>Вторник</th>
+                            <th>Среда</th>
+                            <th>Четверг</th>
+                            <th>Пятница</th>
+                            <th>Суббота</th>
+                            <th>Воскресенье</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="day-column">12:00</td>
+                            <td></td>
+                            <td>Классика</td>
+                            <td></td>
+                            <td></td>
+                            <td>Классика</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="day-column">12:30</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>ДХ 5+</td>
+                        </tr>
+                        <tr>
+                            <td class="day-column">13:00</td>
+                            <td></td>
+                            <td>СТ 7+</td>
+                            <td></td>
+                            <td></td>
+                            <td>СТ 7+</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="day-column">13:30</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>ДХ 3+</td>
+                        </tr>
+                        <tr>
+                            <td class="day-column">14:00</td>
+                            <td>СТ 13+</td>
+                            <td>СТ 9+</td>
+                            <td></td>
+                            <td>СТ 13+</td>
+                            <td>СТ 9+</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="day-column">15:00</td>
+                            <td>СТ 15+</td>
+                            <td>СТ 11+</td>
+                            <td></td>
+                            <td>СТ 15+</td>
+                            <td>СТ 11+</td>
+                            <td></td>
+                            <td>Танцы для взрослых</td>
+                        </tr>
+                        <tr>
+                            <td class="day-column">16:00</td>
+                            <td>JAZZ-FUNK</td>
+                            <td>K-POP</td>
+                            <td></td>
+                            <td>JAZZ-FUNK</td>
+                            <td>K-POP</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="day-column">17:00</td>
+                            <td></td>
+                            <td>Растяжка</td>
+                            <td></td>
+                            <td>ДХ 3+</td>
+                            <td>Растяжка</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="day-column">18:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>ДХ 5+</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="day-column">19:00</td>
+                            <td></td>
+                            <td>Фитнес</td>
+                            <td></td>
+                            <td></td>
+                            <td>Фитнес</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    
+    <footer id="contacts">
+        <div class="container">
+            <h3>DADFAM</h3>
+            <p>г.Руза,ул Гладышева, д. 12</p>
+            <p>😍Для записи и вопросов звоните по телефону
+                +7 (977) 407-69-53 Мариета</p>
+            <p></p>
+            
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@dadfam7?_t=ZS-8xIIz1CWgES&_r=1">Tiktok</a>
+                <a href="https://vk.com/dadfam">VK</a>
+                <a href="https://t.me/dadfam1">Telegram</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+<link rel="main" href="main.css">

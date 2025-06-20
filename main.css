@@ -1,0 +1,399 @@
+:root {
+    --black: #000000;
+    --gold: #D4AF37;
+    --light-gold: #F5E6AB;
+    --dark-gold: #996515;
+    --gray: #222222;
+    --darker-gray: #1a1a1a;
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--black);
+    color: white;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+header {
+    background: linear-gradient(to right, var(--black), var(--gray));
+    color: var(--gold);
+    padding: 1.5rem 0;
+    text-align: center;
+    border-bottom: 3px solid var(--gold);
+    position: relative;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: var(--transition);
+}
+
+.logo:hover {
+    color: var(--light-gold);
+}
+
+.tagline {
+    font-style: italic;
+    color: var(--light-gold);
+    font-size: 1.1rem;
+}
+
+nav {
+    background-color: var(--gray);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0 1.2rem;
+}
+
+nav ul li a {
+    color: var(--light-gold);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    padding: 0.5rem 0;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--gold);
+    transition: var(--transition);
+}
+
+nav ul li a:hover {
+    color: var(--gold);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.hero {
+    background: url('file:///C:/Users/User/OneDrive/Desktop/сайт%20студия/img/Лого.jpg') no-repeat center center;
+    background-size: cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    max-width: 800px;
+    padding: 0 1rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--gold);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--gold);
+    color: var(--black);
+    padding: 0.8rem 2rem;
+    margin-top: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: var(--transition);
+    border: 2px solid var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.section-title {
+    text-align: center;
+    color: var(--gold);
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--gold);
+    margin: 1rem auto 0;
+}
+
+.groups, .teachers {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.group-card, .teacher-card {
+    background-color: var(--gray);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.group-card:hover, .teacher-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+    border-color: var(--light-gold);
+}
+
+.group-img, .teacher-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: var(--transition);
+}
+
+.group-card:hover .group-img, 
+.teacher-card:hover .teacher-img {
+    opacity: 0.9;
+}
+
+.group-content, .teacher-content {
+    padding: 1.5rem;
+}
+
+.group-title, .teacher-title {
+    color: var(--gold);
+    margin-top: 0;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+}
+
+.group-schedule, .teacher-groups {
+    color: var(--light-gold);
+    font-weight: bold;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.teacher-groups {
+    font-style: italic;
+}
+
+footer {
+    background-color: var(--darker-gray);
+    color: var(--light-gold);
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid var(--gold);
+}
+
+footer h3 {
+    color: var(--gold);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.social-links {
+    margin: 1.5rem 0;
+}
+
+.social-links a {
+    color: var(--light-gold);
+    margin: 0 1rem;
+    font-size: 1.8rem;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.social-links a:hover {
+    color: var(--gold);
+    transform: translateY(-3px);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.group-card, .teacher-card, .section-title {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    nav ul li {
+        margin: 0 0.8rem;
+    }
+    
+    nav ul li a {
+        font-size: 0.8rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.7rem;
+    }
+    
+    .groups, .teachers {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    footer h3 {
+        font-size: 1.5rem;
+    }
+    
+    .social-links a {
+        font-size: 1.5rem;
+        margin: 0 0.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo {
+        font-size: 1.8rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: 0.3rem 0;
+    }
+    
+    .hero {
+        height: 350px;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .btn {
+        padding: 0.7rem 1.5rem;
+    }
+    
+    .groups, .teachers {
+        grid-template-columns: 1fr;
+    }
+    
+    footer {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Эффекты для карточек групп и преподавателей */
+.group-card:nth-child(1) { animation-delay: 0.1s; }
+.group-card:nth-child(2) { animation-delay: 0.2s; }
+.group-card:nth-child(3) { animation-delay: 0.3s; }
+.group-card:nth-child(4) { animation-delay: 0.4s; }
+.group-card:nth-child(5) { animation-delay: 0.5s; }
+.group-card:nth-child(6) { animation-delay: 0.6s; }
+.group-card:nth-child(7) { animation-delay: 0.7s; }
+.group-card:nth-child(8) { animation-delay: 0.8s; }
+.group-card:nth-child(9) { animation-delay: 0.9s; }
+.group-card:nth-child(10) { animation-delay: 1s; }
+.group-card:nth-child(11) { animation-delay: 1.1s; }
+.group-card:nth-child(12) { animation-delay: 1.2s; }
+.group-card:nth-child(13) { animation-delay: 1.3s; }
+
+.teacher-card:nth-child(1) { animation-delay: 0.1s; }
+.teacher-card:nth-child(2) { animation-delay: 0.2s; }
+.teacher-card:nth-child(3) { animation-delay: 0.3s; }
+.teacher-card:nth-child(4) { animation-delay: 0.4s; }
+.teacher-card:nth-child(5) { animation-delay: 0.5s; }
